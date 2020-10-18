@@ -1,11 +1,11 @@
 version: '3.4'
 services:
-  turbo-geth.public.dappnode.eth:
+  turbo-geth.dnp.dappnode.eth:
     build:
       context: ./build
       args:
         UPSTREAM_VERSION: v2020.10.01
-    image: 'turbo-geth.public.dappnode.eth:0.1.0'
+    image: 'turbo-geth.dnp.dappnode.eth:0.1.0'
     restart: always
     volumes:
       - 'data:/root/.local/share/turbogeth'
