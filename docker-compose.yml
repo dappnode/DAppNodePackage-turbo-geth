@@ -8,7 +8,7 @@ services:
     image: 'turbo-geth.public.dappnode.eth:0.1.0'
     restart: always
     volumes:
-      - 'data:/root/.local/share/turbogeth/tg/chaindata'
+      - 'data:/root/.local/share/turbogeth'
     environment:
       - LMDB_MAPSIZE=
 volumes:
