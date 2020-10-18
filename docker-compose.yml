@@ -4,7 +4,7 @@ services:
     build:
       context: ./build
       args:
-        UPSTREAM_VERSION: master
+        UPSTREAM_VERSION: v2020.10.01
     image: 'turbo-geth.public.dappnode.eth:0.1.0'
     restart: always
     volumes:
