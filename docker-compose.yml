@@ -11,6 +11,6 @@ services:
       - 'data:/root/.local/share/turbogeth'
     environment:
       - LMDB_MAPSIZE=2000GB
-      - EXTRA_OPTS=
+      - EXTRA_OPTS=''
 volumes:
   data: {}
