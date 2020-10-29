@@ -14,9 +14,9 @@ RUN make all
 
 FROM alpine:3.12
 
-RUN apk add --no-cache ca-certificates libgcc libstdc++
+RUN apk add --no-cache ca-certificates libgcc libstdc++ supervisor
 COPY --from=builder /app/build/bin/* /usr/local/bin/
 
-COPY entrypoint.sh /usr/local/bin/entrypoint
+COPY supervisord.conf /etc/supervisord/supervisord.conf
 
-ENTRYPOINT [ "entrypoint" ]
+ENTRYPOINT ["supervisord","-c","/etc/supervisord/supervisord.conf"]
