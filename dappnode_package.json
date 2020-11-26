@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "shortDescription": "Turbo-Geth is a fork of Go-Ethereum with focus on performance.",
   "description": "Alternative implementation of Ethereum (Eth 1.x), derived from go-ethereum. The main difference between turbo-geth and go-ethereum is in the way the database is used to store and access the Ethereum state and its history. This change has a profound effect on many parts of the code. Currently, turbo-geth only supports full sync from genesis block, but it will support snapshot sync which is more efficient than fast sync and more secure than warp sync. Turbo-geth is also used as a platform for the research into Stateless Ethereum.",
-  "upstreamVersion": "v2020.11.03",
+  "upstreamVersion": "v2020.11.04",
   "type": "service",
   "chain": "ethereum",
   "categories": [
