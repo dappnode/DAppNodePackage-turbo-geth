@@ -19,6 +19,7 @@
   "links": {
     "homepage": "https://github.com/ledgerwatch/turbo-geth"
   },
+  "mainService": "rpcdaemon",
   "license": "GLP-3.0",
   "repository": {
     "type": "git",
