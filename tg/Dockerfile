@@ -18,7 +18,6 @@ RUN apk add --no-cache ca-certificates libgcc libstdc++ supervisor
 COPY --from=builder /app/build/bin/* /usr/local/bin/
 
 ENTRYPOINT [ "sh", "-c", "exec tg \
-    --lmdb.mapSize=\"${ENV_LMDB_MAPSIZE}\" \ 
     --metrics \
     --metrics.addr=\"0.0.0.0\" \
     --metrics.port=\"6060\" \

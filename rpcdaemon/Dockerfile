@@ -18,11 +18,13 @@ RUN apk add --no-cache ca-certificates libgcc libstdc++ supervisor
 COPY --from=builder /app/build/bin/* /usr/local/bin/
 
 ENTRYPOINT [ "sh", "-c", "exec rpcdaemon \
-    --private.api.addr=\"rpcdaemon:9090\" \
+    --private.api.addr=\"tg:9090\" \
     --http.addr=\"0.0.0.0\" \
     --http.vhosts=\"*\" \
     --http.corsdomain=\"*\" \
+    --ws \
     --metrics \
     --metrics.addr=\"0.0.0.0\" \
     --metrics.port=\"6060\" \
-    ${RPCDAEMON_EXTRA_OPTS}" ]
+    $RPCDAEMON_EXTRA_OPTS \
+    " ]
