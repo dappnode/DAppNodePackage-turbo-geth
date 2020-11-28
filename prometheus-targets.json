@@ -1,0 +1,22 @@
+[
+    {
+        "labels": {
+            "package": "tg.turbo-geth.dnp.dappnode.eth",
+            "service": "tg.turbo-geth.dappnode",
+            "__metrics_path__": "/debug/metrics/prometheus"
+        },
+        "targets": [
+            "tg.turbo-geth.dappnode:6060"
+        ]
+    },
+    {
+        "labels": {
+            "package": "rpcdaemon.turbo-geth.dnp.dappnode.eth",
+            "service": "rpcdaemon.turbo-geth.dappnode",
+            "__metrics_path__": "/debug/metrics/prometheus"
+        },
+        "targets": [
+            "rpcdaemon.turbo-geth.dappnode:6060"
+        ]
+    }
+]
