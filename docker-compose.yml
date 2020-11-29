@@ -18,7 +18,7 @@ services:
       args:
         UPSTREAM_VERSION: v2020.11.04
     environment:
-      - "RPCDAEMON_EXTRA_OPTS=--http.api=eth,debug,net"
+      - "RPCDAEMON_EXTRA_OPTS=--http.api=eth,debug,net,web3"
     restart: always
 volumes:
   data: {}
