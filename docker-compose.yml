@@ -5,7 +5,7 @@ services:
     build:
       context: tg
       args:
-        UPSTREAM_VERSION: v2020.12.02
+        UPSTREAM_VERSION: v2020.12.03
     restart: always
     volumes:
       - "data:/root/.local/share/turbogeth"
@@ -16,7 +16,7 @@ services:
     build:
       context: rpcdaemon
       args:
-        UPSTREAM_VERSION: v2020.12.02
+        UPSTREAM_VERSION: v2020.12.03
     environment:
       - "RPCDAEMON_EXTRA_OPTS=--http.api=eth,debug,net,web3"
     restart: always
