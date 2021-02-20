@@ -6,11 +6,11 @@ services:
       context: tg
       args:
         UPSTREAM_VERSION: v2021.02.03
-    restart: always
+    restart: unless-stopped
     volumes:
       - "data:/root/.local/share/turbogeth"
     environment:
-      - TURBO_GETH_EXTRA_OPTS=''
+      TURBO_GETH_EXTRA_OPTS: ""
   rpcdaemon:
     image: "rpcdaemon.turbo-geth.dnp.dappnode.eth:0.1.0"
     build:
@@ -18,7 +18,7 @@ services:
       args:
         UPSTREAM_VERSION: v2021.02.03
     environment:
-      - "RPCDAEMON_EXTRA_OPTS=--http.api=eth,debug,net,web3"
-    restart: always
+      RPCDAEMON_EXTRA_OPTS: "--http.api=eth,debug,net,web3"
+    restart: unless-stopped
 volumes:
   data: {}
