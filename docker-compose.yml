@@ -6,6 +6,9 @@ services:
       context: tg
       args:
         UPSTREAM_VERSION: v2021.02.04
+    ports:
+      - "30303"
+      - 30303/udp
     restart: unless-stopped
     volumes:
       - "data:/root/.local/share/turbogeth"
