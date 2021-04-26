@@ -1,20 +1,28 @@
+FROM golang:1.16-alpine3.13 as builder
 
-FROM golang:1.15-alpine3.12 as builder
+ARG git_commit
+ENV GIT_COMMIT=$git_commit
+
+ARG git_branch
+ENV GIT_BRANCH=$git_branch
+
+# for linters to avoid warnings. we won't use linters in Docker anyway
+ENV LATEST_COMMIT="undefined"
 
 ARG UPSTREAM_VERSION 
+
 RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgcc libstdc++
 
 WORKDIR /app
 
 RUN git clone -b ${UPSTREAM_VERSION} --recurse-submodules -j8 https://github.com/ledgerwatch/turbo-geth.git /app
 RUN go mod download
-# https://github.com/valyala/gozstd/issues/20#issuecomment-557499034
-RUN GOZSTD_VER=$(cat go.mod | fgrep github.com/valyala/gozstd | awk '{print $NF}'); cd ${GOPATH}/pkg/mod/github.com/valyala/gozstd@${GOZSTD_VER}; if [[ ! -f _rebuilt ]]; then chmod -R +w .; make -j8 clean; make -j8 libzstd.a; touch _rebuilt; fi;
 RUN make all
 
-FROM alpine:3.12
+FROM alpine:3.13
 
-RUN apk add --no-cache ca-certificates libgcc libstdc++ supervisor
+RUN apk add --no-cache ca-certificates libgcc libstdc++
+
 COPY --from=builder /app/build/bin/* /usr/local/bin/
 
 ENTRYPOINT [ "sh", "-c", "exec rpcdaemon \
